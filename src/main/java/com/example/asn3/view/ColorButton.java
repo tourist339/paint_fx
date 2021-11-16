@@ -18,7 +18,7 @@ public class ColorButton extends ToolbarButton {
         this.colorName = colorName;
         this.color = color;
 
-        //this.setBackground(new Background(new BackgroundFill(color,new CornerRadii(2f), Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(color,new CornerRadii(2f), Insets.EMPTY)));
 
 
     }
@@ -30,6 +30,7 @@ public class ColorButton extends ToolbarButton {
     public String getColorName() {
         return colorName;
     }
+
 
 
     @Override

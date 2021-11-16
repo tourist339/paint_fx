@@ -1,4 +1,9 @@
 package com.example.asn3;
+/**
+ * Name: Kartik Kapoor
+ * NSID: KAK110
+ * St. Number. 11269913
+ */
 
 import com.example.asn3.Enum.XShapeType;
 import com.example.asn3.controller.DrawingController;
@@ -53,7 +58,7 @@ public class DrawingApp extends Application {
         Scene scene = new Scene(mainUI, 700, 500);
 
 
-        stage.setTitle("Hello!");
+        stage.setTitle("381 A3 ");
         stage.setScene(scene);
         stage.show();
     }

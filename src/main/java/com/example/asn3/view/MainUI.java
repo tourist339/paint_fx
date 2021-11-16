@@ -61,10 +61,12 @@ public class MainUI extends HBox implements IDrawingModelListener, IInteractionM
     @Override
     public void onDrawingModelChange(DrawingNotificationType drawingNotificationType) {
         switch (drawingNotificationType) {
-            case COLOR_CHANGE -> colourToolbar.onColorChange();
+            case COLOR_CHANGE -> {
+                colourToolbar.onColorChange();
+                shapeToolbar.onShapeChange();
+            }
             case SHAPE_CHANGE -> {
                 shapeToolbar.onShapeChange();
-                shapeToolbar.onColorChange();
             }
             case SHAPE_DELETED -> {
                 drawingView.onCanvasUpdate();

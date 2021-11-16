@@ -73,6 +73,7 @@ public abstract class XShape {
             gc.setLineWidth(3f);
         }else{
             gc.setLineWidth(0.5f);
+            gc.setStroke(Color.BLACK);
             viewPortX=0;
             viewPortY=0;
 

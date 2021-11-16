@@ -10,6 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -35,12 +38,19 @@ public class ShapeToolbar extends VBox {
         shapeButtons=new ArrayList<>();
 
         shapeButtons.add(new ShapeButton("",null, XShapeType.RECT));
-        shapeButtons.get(0).setIcon(new Rectangle(30,30),"Rect");
+        shapeButtons.get(0).setIcon(new Rectangle(40,30),"Rect");
 
-        shapeButtons.add(new ShapeButton("Square",null, XShapeType.SQUARE));
-        shapeButtons.add(new ShapeButton("Circle",null, XShapeType.CIRCLE));
-        shapeButtons.add(new ShapeButton("Oval",null, XShapeType.OVAL));
-        shapeButtons.add(new ShapeButton("Line",null, XShapeType.LINE));
+        shapeButtons.add(new ShapeButton("",null, XShapeType.SQUARE));
+        shapeButtons.get(1).setIcon(new Rectangle(30,30),"Square");
+        shapeButtons.add(new ShapeButton("",null, XShapeType.CIRCLE));
+        shapeButtons.get(2).setIcon(new Circle(20),"Circle");
+
+        shapeButtons.add(new ShapeButton("",null, XShapeType.OVAL));
+        shapeButtons.get(3).setIcon(new Ellipse(25,15),"Oval");
+
+        shapeButtons.add(new ShapeButton("",null, XShapeType.LINE));
+        shapeButtons.get(4).setIcon(new Line(5,5,40,30),"Line");
+
 
     }
 
@@ -55,6 +65,10 @@ public class ShapeToolbar extends VBox {
             if(shapeButtons.get(i).getShapeType().equals(selectedShapeType)){
                 selectedShapeButton=shapeButtons.get(i);
                 selectedShapeButton.setSelected();
+                if (drawingModel.getSelectedColor()!=null){
+                    selectedShapeButton.getIcon().setFill(drawingModel.getSelectedColor());
+                    selectedShapeButton.getIcon().setStroke(drawingModel.getSelectedColor());
+                }
             }
         }
     }
@@ -64,6 +78,8 @@ public class ShapeToolbar extends VBox {
     }
 
     public void onColorChange() {
-
+        if (drawingModel.getSelectedColor()!=null){
+            selectedShapeButton.getIcon().setFill(drawingModel.getSelectedColor());
+        }
     }
 }

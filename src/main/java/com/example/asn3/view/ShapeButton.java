@@ -9,10 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 
 public class ShapeButton extends ToolbarButton {
     private XShapeType shapeType;
     private String shapeName;
+    private Shape icon;
 
     public ShapeButton(String s, Node icon,XShapeType shapeType) {
         super(s, icon);
@@ -25,13 +28,27 @@ public class ShapeButton extends ToolbarButton {
         return shapeType;
     }
 
-    public void setIcon(Node node,String label){
+    @Override
+    public void setUnselected() {
+        super.setUnselected();
+        this.getIcon().setFill(Color.BLACK);
+        this.getIcon().setStroke(Color.BLACK);
+
+    }
+
+    public void setIcon(Shape node, String label){
         VBox vBox=new VBox();
         Label text=new Label(label);
+        this.icon=node;
         vBox.getChildren().addAll(node,text);
         vBox.setAlignment(Pos.CENTER);
         this.setGraphic(vBox);
     }
+
+    public Shape getIcon() {
+        return icon;
+    }
+
     @Override
     public void setController(DrawingController controller) {
         setOnAction(e->controller.onShapeSelected(getShapeType()));

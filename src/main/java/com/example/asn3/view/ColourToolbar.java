@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ColourToolbar extends VBox {
-    HashMap<String, Color> colorButtonsData;
     List<ColorButton> colorButtonList;
     private DrawingModel drawingModel;
     private ColorButton selectedButton;
@@ -23,31 +22,27 @@ public class ColourToolbar extends VBox {
     public ColourToolbar() {
 
         generateColorData();
-        colorButtonList=new ArrayList<>();
-        double buttonHeight=this.getPrefHeight();
-        System.out.println(buttonHeight);
-        System.out.println(this.getPrefWidth());
+
 
         this.setPrefWidth(100f);
         this.setMaxWidth(100f);
         this.setMinWidth(100f);
 
-        for (String key:colorButtonsData.keySet()) {
-            ColorButton colorButton=new ColorButton(key,colorButtonsData.get(key));
-            colorButtonList.add(colorButton);
-            getChildren().add(colorButton);
+        for (ColorButton btn:colorButtonList) {
+            getChildren().add(btn);
         }
 
     }
     private void generateColorData(){
-        colorButtonsData=new HashMap<>();
-        colorButtonsData.put("Aqua", Color.AQUA);
-        colorButtonsData.put("Violet", Color.VIOLET);
-        colorButtonsData.put("Green", Color.GREEN);
-        colorButtonsData.put("Gold", Color.GOLD);
-        colorButtonsData.put("Orange", Color.ORANGE);
-        colorButtonsData.put("Fuchsia", Color.FUCHSIA);
-        colorButtonsData.put("Peru", Color.PERU);
+        colorButtonList=new ArrayList<>();
+        colorButtonList.add(new ColorButton("Aqua", Color.AQUA));
+        colorButtonList.add(new ColorButton("Violet", Color.VIOLET));
+        colorButtonList.add(new ColorButton("Green", Color.GREEN));
+        colorButtonList.add(new ColorButton("Gold", Color.GOLD));
+        colorButtonList.add(new ColorButton("Orange", Color.ORANGE));
+        colorButtonList.add(new ColorButton("Coral", Color.CORAL));
+        colorButtonList.add(new ColorButton("Fuchsia", Color.FUCHSIA));
+        colorButtonList.add(new ColorButton("Peru", Color.PERU));
     }
 
     public void setDrawingController(DrawingController controller){

@@ -16,7 +16,7 @@ public abstract class ToolbarButton extends Button {
     }
 
     public void setSelected(){
-        this.setStyle("-fx-border-width: 2px");
+        this.setStyle("-fx-border-width: 10px");
         this.setStyle("-fx-border-color: black");
 
     }
